@@ -1,0 +1,19 @@
+{
+  "name": "poslednyaya-bashnya",
+  "version": "1.0.0",
+  "description": "ПОСЛЕДНЯЯ БАШНЯ — рогалик-оборона: башня в центре отстреливается от волн врагов; между волнами лавка улучшений и постройки, после забега — постоянные улучшения за монеты. Один HTML-файл, canvas 2D, без внешних ресурсов.",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "test": "node tests/headless.js",
+    "balance": "node tests/balance.js",
+    "probe": "node tests/probe.js",
+    "seeds": "node tests/seeds.js 8",
+    "shots": "node tests/snapshot.js mid && node tests/snapshot.js rich && python3 tests/rasterize.py mid rich",
+    "shots:win": "node tests/snapshot.js mid && node tests/snapshot.js rich && python tests/rasterize.py mid rich"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT"
+}

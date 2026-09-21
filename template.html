@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#05070e">
+<meta name="description" content="Последняя башня — рогалик-оборона: башня в центре отстреливается от волн врагов, между волнами лавка улучшений и постройки, после забега — постоянные улучшения за монеты.">
+<title>ПОСЛЕДНЯЯ БАШНЯ — рогалик-оборона</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="hidden">
+  <div class="hud-left">
+    <div class="hpwrap">
+      <div class="hpbar"><div id="shieldFill" class="fill shield" style="display:none"></div><div id="hpFill" class="fill ok"></div></div>
+      <div class="hplabel">🏰 <span id="hpText">100 / 100</span></div>
+    </div>
+    <div class="stat-row">
+      <div class="chip coins">◉ <b id="coinText">0</b></div>
+      <div class="chip wave">🌊 <span id="waveText">Волна —</span></div>
+      <div class="chip kills">👾 <span id="killText"></span></div>
+    </div>
+    <div class="waveprog"><div id="waveProgFill"></div></div>
+    <div id="buildWrap" class="build hidden">
+      <div class="buildbar"><div id="buildFill"></div></div>
+      <div id="buildText" class="build-text"></div>
+    </div>
+  </div>
+
+  <div class="hud-right">
+    <button id="btnPause" class="ibtn" title="Пауза (P)">⏸</button>
+    <button id="btnSound" class="ibtn" title="Звук">🔊</button>
+    <button id="btnHelp" class="ibtn" title="Как играть">❓</button>
+    <button id="btnStatsPop" class="ibtn hud-pop" title="Характеристики башни">📊</button>
+    <button id="btnWavePop" class="ibtn hud-pop" title="Враги волны">👾</button>
+  </div>
+
+  <div id="bossBar" class="boss hidden">
+    <div id="bossName">БОСС</div>
+    <div class="bossbar"><div id="bossFill"></div></div>
+  </div>
+
+  <div class="hud-bottom">
+    <button id="btnTarget" class="cbtn" title="Приоритет цели (Q/E)"><span class="ico">◎</span><span>БЛИЖНИЙ</span></button>
+    <button id="btnSpeed" class="cbtn speed" title="Скорость игры (F)"><span class="ico">⏩</span><span id="speedLabel">×1</span></button>
+    <button id="btnStrike" class="cbtn strike ready" title="Орбитальный удар (ПРОБЕЛ)"><span id="strikeCd"></span><span class="ico">☄️</span><span>УДАР</span><small id="strikeKey"></small></button>
+    <button id="btnStart" class="cbtn start" title="Начать волну (ENTER)">▶ ВОЛНА</button>
+  </div>
+
+  <div id="invBar" class="hidden"></div>
+</div>
+
+<!-- ============ ЛЕВАЯ КОЛОНКА: ХАРАКТЕРИСТИКИ БАШНИ И ВРАГОВ ============ -->
+<div id="leftCol">
+  <div id="statsPanel">
+    <div class="sp-head"><span class="sp-title">БАШНЯ</span><button id="btnStats" class="sp-btn" title="Свернуть/развернуть характеристики">▾</button></div>
+    <div id="statsBody"></div>
+  </div>
+  <div id="enemyPanel" class="hidden">
+    <div class="sp-head"><span class="sp-title" id="enemyTitle">ВРАГИ ВОЛНЫ</span></div>
+    <div id="enemyBody"></div>
+  </div>
+</div>
+
+<!-- ============ ЛАВКА ============ -->
+<div id="shop" class="hidden">
+  <div class="shop-scroll">
+    <div class="sec-title">УЛУЧШЕНИЯ <button id="btnReroll" class="reroll">🔄 <span id="rerollText"></span></button></div>
+    <div id="shelf" class="shelf"></div>
+    <div class="sec-title">ОБОРОНА И РЕМОНТ</div>
+    <div id="structList" class="structs"></div>
+    <button id="btnRepair" class="sbtn repair"></button>
+  </div>
+</div>
+
+<!-- ============ БАННЕР / ТОСТЫ / МОДАЛКИ ============ -->
+<div id="rotateHint">📱⟲<br>Поверните телефон вертикально — игра работает в портретном режиме</div>
+<div id="bannerWrap"><div id="banner"></div><div id="bannerSub"></div></div>
+<div id="toasts"></div>
+<div id="overlay" class="hidden"><div id="screen"></div></div>
+
+<script src="https://yandex.ru/games/sdk/v2"></script>
+<script>/*__JS__*/</script>
+</body>
+</html>
